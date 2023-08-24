@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MI-2023 Deformidades</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+ 
+	<body>
+		<header>
+			<nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+				<div class="flex flex-wrap justify-between items-center">
+					<a href="#" class="flex items-center">
+						<img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+						<span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white py-1">Clasificador de deformidades en frutas</span>
+					</a>
+				</div>
+			</nav>
+		</header>
+		
+		<main class="container px-4 lg:px-6 py-2.5">
+			<div class="grid grid-cols-2 gap-2">
+				<div class="w-full main-panel">
+					<div class="fruits-selection">
+						<h2 class="font-bold text-lg">Seleccione la fruta que desea clasificar:</h2>
+						<ul id="fruits-selection" class="filter-switch flex flex-row justify-around items-center h-12 p-1 space-x-1 font-semibold my-4">
+							<li class="filter-switch-item">
+								<input type="radio" name="r-fruit" id="r-manzana" class="sr-only" checked>
+								<label for="r-manzana" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+									Manzana
+								</label>
+								<div aria-hidden="true" class="filter-active"></div>
+							</li>
+							<li class="filter-switch-item">
+								<input type="radio" name="r-fruit" id="r-mango" class="sr-only">
+								<label for="r-mango" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+									Mango
+								</label>
+							</li>
+							<li class="filter-switch-item">
+								<input type="radio" name="r-fruit" id="r-fresa" class="sr-only">
+								<label for="r-fresa" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+									Fresa
+								</label>
+							</li>
+						</ul>					
+					</div>
+
+					<div class="image-selectioqqn">
+						<form method="POST" action="/" enctype="multipart/form-data">
+							<input class="ok" type="file" name="file">
+							<button class="op">Submit</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="second-panel">
+					<div>
+						<h1>Hola</h1>
+					</div>
+					<div>
+						<h2>Hola 2</h2>
+					</div>
+
+				</div>
+			</div>
+		</main>
+		
+		<footer>
+		</footer>
+	 
+		<script src="/static/index.js" charset="utf-8"></script>
+	</body>
+ 
+</html>

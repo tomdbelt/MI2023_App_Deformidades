@@ -1,0 +1,21 @@
+h1{
+    color: red;
+    font-size: 36px;
+}
+
+.filter-switch label {
+  cursor: pointer;
+  border: solid;
+  border-width: 2px 2px;
+  border-color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.filter-switch-item input:checked + label {
+  background-color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: white
+}
+
+.filter-switch-item input:not(:checked) + label {
+  --bg-opacity: 0;
+  box-shadow: none;
+}
