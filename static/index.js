@@ -4,22 +4,22 @@ $( document ).ready(function(){
         switch(n) {
             case 'manzana':
                 $('#imgs_reference').html(
-                    `<div class="grid grid-flow-col content-center items-center border-right"> 
+                    `<div class="grid grid-flow-row content-center items-center border-right"> 
                         <img src="./static/imgs/manz-extra.jpg" alt="ref-manzana" class="img"/>
                         <p class="text-center">Extra</p>
                     </div>
-                    <div class="grid grid-flow-col content-center items-center"> 
+                    <div class="grid grid-flow-row content-center items-center"> 
                         <img src="./static/imgs/manz-1.png" alt="ref-manzana" class="img"/>
                         <p class="text-center">Clase 1</p>
                     </div>
-                    <div class="grid grid-flow-col content-center items-center border-left"> 
+                    <div class="grid grid-flow-row content-center items-center border-left"> 
                         <img src="./static/imgs/manz-2.png" alt="ref-manzana" class="img"/>
                         <p class="text-center">Clase 2</p>
                     </div>`
                 );
 
                 $('#info_models').html(
-                    `<div class="grid grid-cols-3 gap-4"> 
+                    `<div class="grid grid-cols-3 gap-2"> 
                         <div class="block">
                             <p><b>Nombre:</b> MobileNetV2</p>
                         </div>
@@ -41,22 +41,22 @@ $( document ).ready(function(){
 
             case 'mango':
                 $('#imgs_reference').html(
-                    `<div class="grid grid-flow-col content-center items-center border-right">
+                    `<div class="grid grid-flow-row content-center items-center border-right">
                         <img src="./static/imgs/mango-extra.jpeg" alt="ref-manzana" class="img"/>                
                         <p class="text-center">Extra</p>
                     </div>
-                    <div class="grid grid-flow-col content-center items-center"> 
+                    <div class="grid grid-flow-row content-center items-center"> 
                         <img src="./static/imgs/mango-1.jpeg" alt="ref-manzana" class="img"/>
                         <p class="text-center">Clase 1</p>
                     </div>
-                    <div class="grid grid-flow-col content-center items-center border-left"> 
+                    <div class="grid grid-flow-row content-center items-center border-left"> 
                         <img src="./static/imgs/mango-2.png" alt="ref-manzana" class="img"/>
                         <p class="text-center">Clase 2</p>
                     </div>`
                 );
 
                 $('#info_models').html(
-                    `<div class="grid grid-cols-3 gap-4"> 
+                    `<div class="grid grid-cols-3 gap-2"> 
                         <div class="block">
                             <p><b>Nombre:</b> MobileNetV2</p>
                         </div>
@@ -78,22 +78,22 @@ $( document ).ready(function(){
 
             case 'fresa':
                 $('#imgs_reference').html(
-                    `<div class="grid grid-flow-col content-center items-center border-right"> 
+                    `<div class="grid grid-flow-row content-center items-center border-right"> 
                         <img src="./static/imgs/fresa-extra.png" alt="ref-manzana" class="img"/>
                         <p class="text-center">Extra</p>
                     </div>
-                    <div class="grid grid-flow-col content-center items-center"> 
+                    <div class="grid grid-flow-row content-center items-center"> 
                         <img src="./static/imgs/fresa-1.png" alt="ref-manzana" class="img"/>
                         <p class="text-center">Clase 1</p>
                     </div>
-                    <div class="grid grid-flow-col content-center items-center border-left"> 
+                    <div class="grid grid-flow-row content-center items-center border-left"> 
                         <img src="./static/imgs/fresa-2.png" alt="ref-manzana" class="img"/>
                         <p class="text-center">Clase 2</p>
                     </div>`
                 );
 
                 $('#info_models').html(
-                    `<div class="grid grid-cols-3 gap-4"> 
+                    `<div class="grid grid-cols-3 gap-2"> 
                         <div class="block">
                             <p><b>Nombre:</b> MobileNetV2</p>
                         </div>
@@ -114,8 +114,4 @@ $( document ).ready(function(){
                 break;
         }
     });
-});
-
-$( window ).on( "load", function() {
-    $('#r_manzana').trigger( "change" );
 });

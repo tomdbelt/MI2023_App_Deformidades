@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
 import re
 import sys 
@@ -27,28 +27,29 @@ def prepareImage(imgData1):
 	    output.write(base64.b64decode(imgstr))
 
 # ROUTES
-@app.route("/")
+@app.route("/", methods=['GET','POST'])
 def index_view():
+    if request.method == 'POST':
+        selectedFruit = request.form['r_fruit']
+        f = open("selectedFruit.txt", "w")
+        f.write(selectedFruit)
+        f.close()
+        clase, prob = predict(selectedFruit)
+        img = request.files["fruit_image"]
+        
+        return render_template('index.html', class_prediction=clase, prob_prediction=prob)
     return render_template("index.html")
         
-@app.route('/',methods=['GET','POST'])
-def predict():
-    option = request.form['r_fruit']
-    print(option)
-    # imgData = request.get_data()
-    # prepareImage(imgData)
-    # x = cv2.imread('output.png',mode='L')
-    # x = np.invert(x)
-    # x = cv2.imresize(x,(28,28))
-    # x = x.reshape(1,28,28,1)
+def predict(selectedFruit):
+    if selectedFruit == "manzana":
+        print("manzana")
+    elif selectedFruit == "mango":
+        print("mango")
+    else:
+        print("fresa")
+    
+    return 0,0
 
-    # with graph_manzana.as_default():
-    #     out = model_manzana.predict(x)
-    #     print(out)
-    #     print(np.argmax(out,axis=1))
-        
-    #     response = np.array_str(np.argmax(out,axis=1))
-    #     return response	
  
 if __name__ == '__main__': 
    app.run(debug=True)

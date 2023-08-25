@@ -26,65 +26,174 @@
 		<main class="px-4 py-2.5">
 			<div class="grid grid-cols-2 gap-1">
 				<div class="w-full main-panel">
-					<div class="fruits-selection">
-						<h2 class="font-bold text-lg">Seleccione la fruta que desea clasificar:</h2>
-						<ul id="fruits-selection" class="filter-switch flex flex-row justify-around items-center h-12 p-1 space-x-1 font-semibold my-4">
-							<li class="filter-switch-item">
-								<input type="radio" name="r_fruit" id="r_manzana" class="sr-only" value="manzana" checked>
-								<label for="r_manzana" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
-									Manzana
-								</label>
-								<div aria-hidden="true" class="filter-active"></div>
-							</li>
-							<li class="filter-switch-item">
-								<input type="radio" name="r_fruit" id="r_mango" class="sr-only" value="mango">
-								<label for="r_mango" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
-									Mango
-								</label>
-							</li>
-							<li class="filter-switch-item">
-								<input type="radio" name="r_fruit" id="r_fresa" class="sr-only" value="fresa">
-								<label for="r_fresa" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
-									Fresa
-								</label>
-							</li>
-						</ul>					
-					</div>
-
-					<div class="image-selection">
-						<center>
-							<form class="bg-white rounded px-8 pt-6 pb-8 mb-4" method="POST" action="/predict" enctype="multipart/form-data">
-								<input class="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] font-normal leading-[2.15] text-gray-800 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-gray-800 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-700 focus:border-primary focus:text-gray-800 focus:shadow-te-primary focus:outline-none dark:border-gray-800 dark:text-neutral-900 dark:file:bg-gray-800 dark:file:text-neutral-100 dark:focus:border-primary" aria-describedby="file_input_help" type="file" name="file"><br>
+					<form class="bg-white rounded" method="POST" enctype="multipart/form-data">
+						<div class="fruits-selection">
+							<h2 class="font-bold text-lg">Seleccione la fruta que desea clasificar:</h2>
+							<ul id="fruits-selection" class="filter-switch flex flex-row justify-around items-center h-12 p-1 space-x-1 font-semibold my-4">
+								<li class="filter-switch-item">
+									<input type="radio" name="r_fruit" id="r_manzana" class="sr-only" value="manzana" {% if request.form.get('r_fruit') == 'manzana' %}checked{% endif %}>
+									<label for="r_manzana" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+										Manzana
+									</label>
+									<div aria-hidden="true" class="filter-active"></div>
+								</li>
+								<li class="filter-switch-item">
+									<input type="radio" name="r_fruit" id="r_mango" class="sr-only" value="mango" {% if request.form.get('r_fruit') == 'mango' %}checked{% endif %}>
+									<label for="r_mango" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+										Mango
+									</label>
+								</li>
+								<li class="filter-switch-item">
+									<input type="radio" name="r_fruit" id="r_fresa" class="sr-only" value="fresa" {% if request.form.get('r_fruit') == 'fresa' %}checked{% endif %}>
+									<label for="r_fresa" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+										Fresa
+									</label>
+								</li>
+							</ul>					
+						</div>
+	
+						<div class="image-selection px-8">
+							<center>
+								<input class="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] font-normal leading-[2.15] text-gray-800 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-gray-800 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-700 focus:border-primary focus:text-gray-800 focus:shadow-te-primary focus:outline-none dark:border-gray-800 dark:text-neutral-900 dark:file:bg-gray-800 dark:file:text-neutral-100 dark:focus:border-primary" aria-describedby="file_input_help" type="file" name="fruit_image"><br>
 								<input type="submit" class="py-3 px-8 dark:bg-gray-800 shadow-xl hover:bg-gray-700 text-white font-bold rounded-full" value="Predecir"></button>
-							</form>
-						</center>
-						
-					</div>
+							</center>	
+													
+							{% if image %}
+								<h3>Imagen subida:</h3>
+								<img src="data:image/png;base64,{{ image }}" alt="Uploaded Image">
+							{% endif %}
+						</div>
+					</form>
+					
 				</div>
 
 				<div class="w-full second-panel">
 					<div id="block_references" class="panel my-3 py-2.5 px-2.5">				
 						<h2 class="font-bold text-lg">Imágenes de Referencia</h2>
-						<div id="imgs_reference" class="py-2 grid grid-cols-3 content-stretch"></div>
+						<div id="imgs_reference" class="py-2 grid grid-cols-3 content-stretch">
+							{% if request.form.get('r_fruit') == 'manzana' %}
+								<div class="grid grid-flow-row content-center items-center border-right"> 
+									<img src="./static/imgs/manz-extra.jpg" alt="ref-manzana" class="img"/>
+									<p class="text-center">Extra</p>
+								</div>
+								<div class="grid grid-flow-row content-center items-center"> 
+									<img src="./static/imgs/manz-1.png" alt="ref-manzana" class="img"/>
+									<p class="text-center">Clase 1</p>
+								</div>
+								<div class="grid grid-flow-row content-center items-center border-left"> 
+									<img src="./static/imgs/manz-2.png" alt="ref-manzana" class="img"/>
+									<p class="text-center">Clase 2</p>
+								</div>
+							{% endif %}
+
+							{% if request.form.get('r_fruit') == 'mango' %}
+								<div class="grid grid-flow-row content-center items-center border-right">
+									<img src="./static/imgs/mango-extra.jpeg" alt="ref-manzana" class="img"/>                
+									<p class="text-center">Extra</p>
+								</div>
+								<div class="grid grid-flow-row content-center items-center"> 
+									<img src="./static/imgs/mango-1.jpeg" alt="ref-manzana" class="img"/>
+									<p class="text-center">Clase 1</p>
+								</div>
+								<div class="grid grid-flow-row content-center items-center border-left"> 
+									<img src="./static/imgs/mango-2.png" alt="ref-manzana" class="img"/>
+									<p class="text-center">Clase 2</p>
+								</div>
+							{% endif %}
+
+							{% if request.form.get('r_fruit') == 'fresa' %}
+								<div class="grid grid-flow-row content-center items-center border-right"> 
+									<img src="./static/imgs/fresa-extra.png" alt="ref-manzana" class="img"/>
+									<p class="text-center">Extra</p>
+								</div>
+								<div class="grid grid-flow-row content-center items-center"> 
+									<img src="./static/imgs/fresa-1.png" alt="ref-manzana" class="img"/>
+									<p class="text-center">Clase 1</p>
+								</div>
+								<div class="grid grid-flow-row content-center items-center border-left"> 
+									<img src="./static/imgs/fresa-2.png" alt="ref-manzana" class="img"/>
+									<p class="text-center">Clase 2</p>
+								</div>
+							{% endif %}
+						</div>
 						<p class="font-sans text-xs font-normal leading-tight">Si la fruta se encuentra con un grado de deformidad mayor al de las imágenes mostradas, será categorizada como "Sin Clase". Imágenes obtenidas del conjunto de entrenamiento.</p>					
 					</div>
 
 					<div id="block_models" class="panel my-3 py-2.5 px-2.5">
 						<h2 class="font-bold text-lg">Información del modelo</h2>
-						<div id="info_models"></div>
+						<div id="info_models">
+							{% if request.form.get('r_fruit') == 'manzana' %}
+								<div class="grid grid-cols-3 gap-2"> 
+									<div class="block">
+										<p><b>Nombre:</b> MobileNetV2</p>
+									</div>
+									<div class="block">
+										<p><b>Learning Rate:</b> 0.001</p>
+									</div>
+									<div class="block">
+										<p><b>Batch Size:</b> 32</p>
+									</div>
+									<div class="block">
+										<p><b>Épocas:</b> 11</p>
+									</div>
+									<div class="block">
+										<p><b>Dropout:</b> 0.3</p>
+									</div>
+								</div>
+							{% endif %}
+
+							{% if request.form.get('r_fruit') == 'mango' %}
+								<div class="grid grid-cols-3 gap-2"> 
+									<div class="block">
+										<p><b>Nombre:</b> MobileNetV2</p>
+									</div>
+									<div class="block">
+										<p><b>Learning Rate:</b> 0.001</p>
+									</div>
+									<div class="block">
+										<p><b>Batch Size:</b> 32</p>
+									</div>
+									<div class="block">
+										<p><b>Épocas:</b> 30</p>
+									</div>
+									<div class="block">
+										<p><b>Dropout:</b> 0.3</p>
+									</div>
+								</div>
+							{% endif %}
+
+							{% if request.form.get('r_fruit') == 'fresa' %}
+								<div class="grid grid-cols-3 gap-2"> 
+									<div class="block">
+										<p><b>Nombre:</b> MobileNetV2</p>
+									</div>
+									<div class="block">
+										<p><b>Learning Rate:</b> 0.001</p>
+									</div>
+									<div class="block">
+										<p><b>Batch Size:</b> 32</p>
+									</div>
+									<div class="block">
+										<p><b>Épocas:</b> 23</p>
+									</div> 
+									<div class="block">
+										<p><b>Dropout:</b> 0.3</p>
+									</div>
+								</div>
+							{% endif %}
+						</div>
 					</div>
 
 					<div id="block_prediction" class="panel my-3 py-2.5 px-2.5">
 						<h2 class="font-bold text-lg">Predicción</h2>
-
-
+						{% if prob_prediction %}
+        					<h2>Prediction Result:</h2>
+        					<p>La fruta es {{ class_prediction }}. Resultado obtenido con una probabilidad del {{ prob_prediction }} </p>
+    					{% endif %}
 					</div>
 				</div>
 			</div>
 		</main>
-		
-		<footer>
-		</footer>
 	 
 		<script src="/static/index.js" charset="utf-8"></script>
 	</body>

@@ -59,6 +59,11 @@
 							</form>
 						</center>
 						
+                        <div class="col-lg-5" style="padding-top:30px">
+							<span class="border border-primary">
+								<img src="{{ user_image }}" alt="User Image" class="img-thumbnail" style="width:250px;height:250px;float:right">
+							</span>
+						</div>
 					</div>
 				</div>
 
@@ -76,8 +81,8 @@
 
 					<div id="block_prediction" class="panel my-3 py-2.5 px-2.5">
 						<h2 class="font-bold text-lg">Predicción</h2>
-
-
+                        <h4>Clase: <mark style="background-color:#04aa6d;color:white;border-radius:5px">{{class}}</mark></h4>
+                        <h4>Probabilities : {{prob}}</h4>
 					</div>
 				</div>
 			</div>

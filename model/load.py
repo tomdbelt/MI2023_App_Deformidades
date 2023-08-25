@@ -15,7 +15,7 @@ def init(fruta):
         loaded_model = model_from_json(loaded_model_json)
         
         # Load weights into new model
-        loaded_model.load_weights("./model/MobileNetV2_manzana.h5")
+        loaded_model.load_weights("./model/MobileNetV2_Manzana.h5")
         print("*"*15)
         print("Modelo manzana cargado exitosamente")
         print("*"*15)
