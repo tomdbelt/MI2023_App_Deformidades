@@ -8,6 +8,7 @@
 		<title>MI-2023 Deformidades</title>
 		<link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
 		<link rel="stylesheet" href="../static/style.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	</head>
  
 	<body>
@@ -22,50 +23,59 @@
 			</nav>
 		</header>
 		
-		<main class="container px-4 lg:px-6 py-2.5">
-			<div class="grid grid-cols-2 gap-2">
+		<main class="px-4 py-2.5">
+			<div class="grid grid-cols-2 gap-1">
 				<div class="w-full main-panel">
 					<div class="fruits-selection">
 						<h2 class="font-bold text-lg">Seleccione la fruta que desea clasificar:</h2>
 						<ul id="fruits-selection" class="filter-switch flex flex-row justify-around items-center h-12 p-1 space-x-1 font-semibold my-4">
 							<li class="filter-switch-item">
-								<input type="radio" name="r-fruit" id="r-manzana" class="sr-only" checked>
-								<label for="r-manzana" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+								<input type="radio" name="r_fruit" id="r_manzana" class="sr-only" value="manzana" checked>
+								<label for="r_manzana" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
 									Manzana
 								</label>
 								<div aria-hidden="true" class="filter-active"></div>
 							</li>
 							<li class="filter-switch-item">
-								<input type="radio" name="r-fruit" id="r-mango" class="sr-only">
-								<label for="r-mango" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+								<input type="radio" name="r_fruit" id="r_mango" class="sr-only" value="mango">
+								<label for="r_mango" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
 									Mango
 								</label>
 							</li>
 							<li class="filter-switch-item">
-								<input type="radio" name="r-fruit" id="r-fresa" class="sr-only">
-								<label for="r-fresa" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
+								<input type="radio" name="r_fruit" id="r_fresa" class="sr-only" value="fresa">
+								<label for="r_fresa" class="block w-32 py-2 px-6 text-base text-center leading-6 text-gray-600 hover:text-gray-800 bg-white rounded-3xl shadow">
 									Fresa
 								</label>
 							</li>
 						</ul>					
 					</div>
 
-					<div class="image-selectioqqn">
+					<div class="image-selection">
 						<form method="POST" action="/" enctype="multipart/form-data">
 							<input class="ok" type="file" name="file">
-							<button class="op">Submit</button>
+							<button class="op">Predecir</button>
 						</form>
 					</div>
 				</div>
 
-				<div class="second-panel">
-					<div>
-						<h1>Hola</h1>
-					</div>
-					<div>
-						<h2>Hola 2</h2>
+				<div class="w-full second-panel">
+					<div id="block_references" class="panel my-3 py-2.5 px-2.5">				
+						<h2 class="font-bold text-lg">Imágenes de Referencia</h2>
+						<div id="imgs_reference" class="py-2 grid grid-cols-3 content-stretch"></div>
+						<p class="font-sans text-xs font-normal leading-tight">Si la fruta se encuentra con un grado de deformidad mayor al de las imágenes mostradas, será categorizada como "Sin Clase". Imágenes obtenidas del conjunto de entrenamiento.</p>					
 					</div>
 
+					<div id="block_models" class="panel my-3 py-2.5 px-2.5">
+						<h2 class="font-bold text-lg">Información del modelo</h2>
+						<div id="info_models"></div>
+					</div>
+
+					<div id="block_prediction" class="panel my-3 py-2.5 px-2.5">
+						<h2 class="font-bold text-lg">Predicción</h2>
+
+
+					</div>
 				</div>
 			</div>
 		</main>
