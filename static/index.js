@@ -113,5 +113,7 @@ $( document ).ready(function(){
                 );
                 break;
         }
+        $('#prediction_section').html('')
+        $('#image_section').html('')
     });
 });

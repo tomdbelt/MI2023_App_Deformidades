@@ -59,8 +59,10 @@
 							</center>	
 													
 							{% if image %}
-								<h3>Imagen subida:</h3>
-								<img src="data:image/png;base64,{{ image }}" alt="Uploaded Image">
+								<div id="image_section" class="grid place-items-center my-2 py-2">
+									<img class="img panel p-3" src="{{url_for('static',filename='to_predict/' + image)}}" alt="Uploaded Image">
+								</div>
+								
 							{% endif %}
 						</div>
 					</form>
@@ -187,8 +189,7 @@
 					<div id="block_prediction" class="panel my-3 py-2.5 px-2.5">
 						<h2 class="font-bold text-lg">Predicción</h2>
 						{% if prob_prediction %}
-        					<h2>Prediction Result:</h2>
-        					<p>La fruta es {{ class_prediction }}. Resultado obtenido con una probabilidad del {{ prob_prediction }} </p>
+        					<div id="prediction_section">La fruta es {{ class_prediction }}. Resultado obtenido con una probabilidad del {{ prob_prediction }}% </div>
     					{% endif %}
 					</div>
 				</div>
