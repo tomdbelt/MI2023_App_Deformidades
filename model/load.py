@@ -1,7 +1,7 @@
 import numpy as np
-import keras.models
-from keras.models import model_from_json
 import tensorflow as tf
+from keras.models import model_from_json
+from keras.optimizers import Adam
 
 
 def init(fruta):
@@ -9,60 +9,63 @@ def init(fruta):
     graph = None
     
     if fruta == 'manzana':
-        json_file = open('model_manzana.json','r')
+        json_file = open('./model/MobileNetV2_Manzana.json','r')
         loaded_model_json = json_file.read()
         json_file.close()
         loaded_model = model_from_json(loaded_model_json)
         
         # Load weights into new model
-        loaded_model.load_weights("model_manzana.h5")
-        print("Loaded Model from disk")
+        loaded_model.load_weights("./model/MobileNetV2_manzana.h5")
+        print("*"*15)
+        print("Modelo manzana cargado exitosamente")
+        print("*"*15)
 
         # Compile and evaluate loaded model
-        loaded_model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-        graph = tf.get_default_graph()
+        loaded_model.compile(
+            optimizer = Adam(learning_rate=0.001),
+            loss = tf.keras.losses.CategoricalCrossentropy(),
+            metrics = ['accuracy']
+        )
+        graph = tf.compat.v1.get_default_graph()
         
     elif fruta == 'mango':
-        json_file = open('model_mango.json','r')
+        json_file = open('./model/MobileNetV2_Mango.json','r')
         loaded_model_json = json_file.read()
         json_file.close()
         loaded_model = model_from_json(loaded_model_json)
         
         # Load weights into new model
-        loaded_model.load_weights("model_mango.h5")
-        print("Loaded Model from disk")
+        loaded_model.load_weights("./model/MobileNetV2_Mango.h5")
+        print("*"*15)
+        print("Modelo mango cargado exitosamente")
+        print("*"*15)
 
         # Compile and evaluate loaded model
-        loaded_model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-        graph = tf.get_default_graph()
+        loaded_model.compile(
+            optimizer = Adam(learning_rate=0.001),
+            loss = tf.keras.losses.CategoricalCrossentropy(),
+            metrics = ['accuracy']
+        )
+        graph = tf.compat.v1.get_default_graph()
     
     else:
-        json_file = open('model_fresa.json','r')
+        json_file = open('./model/MobileNetV2_Fresa.json','r')
         loaded_model_json = json_file.read()
         json_file.close()
         loaded_model = model_from_json(loaded_model_json)
         
         # Load weights into new model
-        loaded_model.load_weights("model_fresa.h5")
-        print("Loaded Model from disk")
+        loaded_model.load_weights("./model/MobileNetV2_Fresa.h5")
+        print("*"*15)
+        print("Modelo fresa cargado exitosamente")
+        print("*"*15)
 
         # Compile and evaluate loaded model
-        loaded_model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-        graph = tf.get_default_graph()
-    
+        loaded_model.compile(
+            optimizer = Adam(learning_rate=0.001),
+            loss = tf.keras.losses.CategoricalCrossentropy(),
+            metrics = ['accuracy']
+        )
+        graph = tf.compat.v1.get_default_graph()
 
-	# json_file = open('model.json','r')
-	# loaded_model_json = json_file.read()
-	# json_file.close()
-	# loaded_model = model_from_json(loaded_model_json)
-	# #load weights into new model
-	# loaded_model.load_weights("model.h5")
-	# print("Loaded Model from disk")
-
-	# #compile and evaluate loaded model
-	# loaded_model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-	# #loss,accuracy = model.evaluate(X_test,y_test)
-	# #print('loss:', loss)
-	# #print('accuracy:', accuracy)
-	# graph = tf.get_default_graph()
     return loaded_model, graph
