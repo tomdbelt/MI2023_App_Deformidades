@@ -33,3 +33,13 @@
   border-right-width: 2px;
   border-color: rgb(31 41 55 / var(--tw-text-opacity));
 }
+
+.border-left-predict {
+  border-left-style: solid;
+  border-left-width: 12px;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}

@@ -42,15 +42,15 @@ $( document ).ready(function(){
             case 'mango':
                 $('#imgs_reference').html(
                     `<div class="grid grid-flow-row content-center items-center border-right">
-                        <img src="./static/imgs/mango-extra.jpeg" alt="ref-manzana" class="img"/>                
+                        <img src="./static/imgs/mango-extra.jpeg" alt="ref-mango" class="img"/>                
                         <p class="text-center">Extra</p>
                     </div>
                     <div class="grid grid-flow-row content-center items-center"> 
-                        <img src="./static/imgs/mango-1.jpeg" alt="ref-manzana" class="img"/>
+                        <img src="./static/imgs/mango-1.jpeg" alt="ref-mango" class="img"/>
                         <p class="text-center">Clase 1</p>
                     </div>
                     <div class="grid grid-flow-row content-center items-center border-left"> 
-                        <img src="./static/imgs/mango-2.png" alt="ref-manzana" class="img"/>
+                        <img src="./static/imgs/mango-2.png" alt="ref-mango" class="img"/>
                         <p class="text-center">Clase 2</p>
                     </div>`
                 );
@@ -79,15 +79,15 @@ $( document ).ready(function(){
             case 'fresa':
                 $('#imgs_reference').html(
                     `<div class="grid grid-flow-row content-center items-center border-right"> 
-                        <img src="./static/imgs/fresa-extra.png" alt="ref-manzana" class="img"/>
+                        <img src="./static/imgs/fresa-extra.png" alt="ref-fresa" class="img"/>
                         <p class="text-center">Extra</p>
                     </div>
                     <div class="grid grid-flow-row content-center items-center"> 
-                        <img src="./static/imgs/fresa-1.png" alt="ref-manzana" class="img"/>
+                        <img src="./static/imgs/fresa-1.png" alt="ref-fresa" class="img"/>
                         <p class="text-center">Clase 1</p>
                     </div>
                     <div class="grid grid-flow-row content-center items-center border-left"> 
-                        <img src="./static/imgs/fresa-2.png" alt="ref-manzana" class="img"/>
+                        <img src="./static/imgs/fresa-2.png" alt="ref-fresa" class="img"/>
                         <p class="text-center">Clase 2</p>
                     </div>`
                 );
